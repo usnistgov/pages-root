@@ -1,0 +1,6 @@
+# Site settings
+title: "NIST Pages"
+description: "NIST official hosting site for USNISTGOV projects, equivalent to GitHub Pages (github.io)"
+
+baseurl: "/pages-root"
+rooturl: ""
