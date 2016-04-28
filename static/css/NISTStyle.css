@@ -13,8 +13,11 @@
 }
 
 body{
-	margin:0;
-	padding:25px
+	margin:0
+}
+
+section{
+	padding:50px
 }
 
 article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{
@@ -6615,6 +6618,8 @@ section.footer{
 
 section.home.home-about{
 	width:100%;
+	padding-left:50px;
+	padding-right:50px;
 	margin-top:-40px
 }
 
