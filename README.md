@@ -9,5 +9,5 @@ semi-dynamic index of all repos hosted on pages.nist.gov.  Descriptive informati
 about those repos is extracted from the html title tag in each repo's index.html.
 
 The list is only semi-dynamic because it will only be updated on a push to this repo
-or on a site rebuild.  (pages currently enforces a manual site rebuild for all sites
+or on a site rebuild.  (pages currently forces a site rebuild for all sites
 every four hours.)
