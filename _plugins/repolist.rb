@@ -37,7 +37,7 @@ module Jekyll
           title = ""
           indexfiles = ['index.html', 'index.htm']
           indexfiles.each do |x|
-            title =  _gettitle(join(@@repodir, repo, x))
+            title =  _gettitle(File.join(@@repodir, repo, x))
             break if title != ""
           end
           s += "<tr><td><a href='/" + repo + "/'>" + repo + "</a></td><td>#{title}</td></tr>"
