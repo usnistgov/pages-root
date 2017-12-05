@@ -32,12 +32,12 @@ module Jekyll
       if repos.empty?
         s = "<p>(No published repos found!)</p>"
       else
-        s = "<br><h3>#{@text}</h3><br><table><tbody>"
+        s = "<table><thead><tr><th>Repo Name</th><th>Description</th></tr></thead><tbody>"
         repos.each do |repo|
           title = _gettitle(File.join(@@repodir, repo, "index.html"))
-          s += "<tr><th><a href='/" + repo + "/'>" + repo + "</a></th><th>#{title}</th></tr>"
+          s += "<tr><td><a href='/" + repo + "/'>" + repo + "</a></td><td>#{title}</td></tr>"
         end
-        s += "</tbody></table><br>"
+        s += "</tbody></table>"
       end
       return s
     end
