@@ -13,7 +13,7 @@ module Jekyll
 
     def _gettitle(filename)
       title = ""
-#      if File.exist?(filename)
+      if File.exist?(filename)
 #        f = File.open(filename, "r")
 #        foundtitle = false
 #        while line = f.gets and !foundtitle do
@@ -25,12 +25,13 @@ module Jekyll
 #        end
 #        f.close
 #      end
-      doc = Nokogiri::HTML(open(filename))
-      doc.search('title').each do |t|
-	title = t.content
-	break
+        doc = Nokogiri::HTML(open(filename))
+        doc.search('title').each do |t|
+	  title = t.content
+	  break
+        end
+        return title
       end
-      return title
     end
 
     def render(context)
@@ -44,7 +45,8 @@ module Jekyll
           title = ""
           indexfiles = ['index.html', 'index.htm']
           indexfiles.each do |x|
-            title =  _gettitle(File.join(@@repodir, repo, x))
+	    fn = File.join(@@repodir, repo, x)
+	    title =  _gettitle(fn)
             break if title != ""
           end
           s += "<tr><td><a href='/" + repo + "/'>" + repo + "</a></td><td>#{title}</td></tr>"
