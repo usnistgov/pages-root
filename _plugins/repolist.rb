@@ -26,7 +26,7 @@ module Jekyll
 #        f.close
 #      end
       doc = Nokogiri::HTML(open(filename))
-      doc.search(title).each do |t|
+      doc.search('title').each do |t|
 	title = t.content
 	break
       end
