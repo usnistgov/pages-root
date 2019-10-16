@@ -1,5 +1,7 @@
 module Jekyll
 
+  require 'nokogiri'
+
   class RepoListTag < Liquid::Tag
 
     @@repodir = '/srv/web/pages-generated'        # Where all the published repos reside
@@ -11,17 +13,22 @@ module Jekyll
 
     def _gettitle(filename)
       title = ""
-      if File.exist?(filename)
-        f = File.open(filename, "r")
-        foundtitle = false
-        while line = f.gets and !foundtitle do
-          m = /<title>\s*(.*)\s*(<\/title>)?/.match(line)
-          if m != nil
-            title = m[1]
-            foundtitle = true
-          end
-        end
-        f.close
+#      if File.exist?(filename)
+#        f = File.open(filename, "r")
+#        foundtitle = false
+#        while line = f.gets and !foundtitle do
+#          m = /<title>\s*(.*)\s*(<\/title>)?/.match(line)
+#          if m != nil
+#            title = m[1]
+#            foundtitle = true
+#          end
+#        end
+#        f.close
+#      end
+      doc = Nokogiri::HTML(open(filename))
+      doc.search(title).each do |t|
+	title = t.content
+	break
       end
       return title
     end
