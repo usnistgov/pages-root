@@ -13,7 +13,7 @@ module Jekyll
 
     def _gettitle(filename)
       title = ""
-      if File.exist?(filename)
+      if FileTest.file?(filename)
         doc = Nokogiri::HTML(open(filename))
         doc.search('title').each do |t|
 	  title = t.content
