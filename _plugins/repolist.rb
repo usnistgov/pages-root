@@ -14,17 +14,6 @@ module Jekyll
     def _gettitle(filename)
       title = ""
       if File.exist?(filename)
-#        f = File.open(filename, "r")
-#        foundtitle = false
-#        while line = f.gets and !foundtitle do
-#          m = /<title>\s*(.*)\s*(<\/title>)?/.match(line)
-#          if m != nil
-#            title = m[1]
-#            foundtitle = true
-#          end
-#        end
-#        f.close
-#      end
         doc = Nokogiri::HTML(open(filename))
         doc.search('title').each do |t|
 	  title = t.content
@@ -40,7 +29,7 @@ module Jekyll
       if repos.empty?
         s = "<p>(No published repos found!)</p>"
       else
-        s = "<table><thead><tr><th>Repo Name</th><th>Description</th></tr></thead><tbody>"
+        s = '<table class="table table-striped"><thead><tr><th>Repo Name</th><th>Description</th></tr></thead><tbody>'
         repos.each do |repo|
           title = ""
           indexfiles = ['index.html', 'index.htm']
