@@ -26,7 +26,7 @@ module Jekyll
 
     def _get_blacklist(filename)
       if FileTest.file?(filename)
-        return File.readlines(filename)
+        return File.readlines(filename).map(&:chomp)
       else
         return []
       end
