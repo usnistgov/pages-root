@@ -35,7 +35,7 @@ module Jekyll
     def render(context)
       blist = _get_blacklist(@@blacklist)
       repos = Dir.entries(@@repodir).select {|entry| File.directory? File.join(@@repodir, entry) and !(entry == '' || entry == '.' || entry == '..' || blist.include?(entry)) }
-      repos = repos.sort
+      repos = repos.sort_by(&:downcase)
       if repos.empty?
         s = "<p>(No published repos found!)</p>"
       else
