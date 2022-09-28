@@ -39,7 +39,7 @@ module Jekyll
       if repos.empty?
         s = "<p>(No published repos found!)</p>"
       else
-        s = '<table class="table table-striped"><thead><tr><th>Repo Name</th><th>Description</th></tr></thead><tbody>'
+        s = '<table id="repotable" class="table table-striped"><thead><tr><th>Repo Name</th><th>Description</th></tr></thead><tbody>'
         repos.each do |repo|
           title = ""
           indexfiles = ['index.html', 'index.htm']
