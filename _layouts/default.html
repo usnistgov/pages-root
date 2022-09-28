@@ -14,7 +14,10 @@
     $('#repotable').DataTable({
      dom: 'Bfrtip',
      buttons: [
-      'print'
+      {
+       extend: 'print',
+       message: 'NIST Pages Table of Contents'
+      }
      ]
     });
    });
