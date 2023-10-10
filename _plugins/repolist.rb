@@ -1,6 +1,7 @@
 module Jekyll
 
   require 'nokogiri'
+  require 'cgi'
 
   class RepoListTag < Liquid::Tag
 
@@ -17,7 +18,7 @@ module Jekyll
       if FileTest.file?(filename)
         doc = Nokogiri::HTML(open(filename))
         doc.search('title').each do |t|
-	  title = t.content
+          title = CGI.escapeHTML(t.content)
 	  break
         end
         return title
