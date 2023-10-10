@@ -14,7 +14,7 @@ module Jekyll
     end
 
     def _toHTML(s)
-      return CGI.escapeHTML(s).gsub('“', '&ldquo;').gsub('”', '&rdquo;').gsub('‘', '&lsquo;').gsub('’', '&rsquo;').gsub('–', '&endash;').gsub('—', '&emdash;')
+      return CGI.escapeHTML(s).gsub('“', '&ldquo;').gsub('”', '&rdquo;').gsub('‘', '&lsquo;').gsub('’', '&rsquo;').gsub('–', '&ndash;').gsub('—', '&mdash;').gsub('·', '&bull;')
     end
 
     def _gettitle(filename)
@@ -22,6 +22,8 @@ module Jekyll
       if FileTest.file?(filename)
         doc = Nokogiri::HTML(open(filename))
         doc.search('title').each do |t|
+          # we will use the DataTables ellipis plugin to truncate long lines but leave them
+          # viewable via tooltips and searchable
           title = _toHTML(t.content)
 	  break
         end

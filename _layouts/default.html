@@ -7,11 +7,16 @@
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   <script type="text/javascript" src="/nist-header-footer/js/nist-header-footer.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.13.6/dataRender/ellipsis.js"></script>
   <!--script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script-->
   <!--script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script-->
   <script type="text/javascript">
    $(document).ready(function () {
     $('#repotable').DataTable({
+      columnDefs: [ {
+	targets: 1,
+	render: DataTable.render.ellipsis( 32 )
+      } ]
 //     dom: '<"top"iB>t<"bottom"flp><"clear">',
 //     buttons: [
 //      {
