@@ -13,12 +13,16 @@ module Jekyll
       @text = text
     end
 
+    def _toHTML(s)
+      return CGI.escapeHTML(s).gsub('“', '&ldquo;').gsub('”', '&rdquo;').gsub('‘', '&lsquo;').gsub('’', '&rsquo;').gsub('–', '&endash;').gsub('—', '&emdash;')
+    end
+
     def _gettitle(filename)
       title = ""
       if FileTest.file?(filename)
         doc = Nokogiri::HTML(open(filename))
         doc.search('title').each do |t|
-          title = CGI.escapeHTML(t.content)
+          title = _toHTML(t.content)
 	  break
         end
         return title
